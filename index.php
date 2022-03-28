@@ -1,10 +1,9 @@
 <?php
-
   $text = 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia repellendus iste dicta rerum officiis expedita molestiae provident sed saepe, aliquid aliquam est voluptates quis ea quasi. Maxime aut dolore veritatis cum! Id commodi consequatur architecto odit illo. Modi soluta illo officiis consectetur aspernatur eaque ipsa maiores eum. Nobis, ut sequi.';
-
   $bad_word = $_GET['word'];
 
-
+  $censured_text = str_replace($bad_word, '***', lcfirst($text));
+  // ho fatto il test con lorem quindi ho aggiunto lcfirst per evitare il caso limite della maiuscola a inizio testo
 ?>
 
 <!DOCTYPE html>
@@ -17,8 +16,13 @@
 </head>
 <body>
   <p>
-    <?php echo $bad_word ?>
+    <?php echo $text ?>
   </p>
+  <div>Lunghezza testo: <?php echo strlen($text); ?> caratteri</div>
+  <p>
+    <?php echo $censured_text ?>
+  </p>
+  <div>Lunghezza testo censurato: <?php echo strlen($censured_text); ?> caratteri</div>
   
 </body>
 </html>
